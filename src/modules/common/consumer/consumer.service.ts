@@ -4,7 +4,7 @@ import { AxiosRequestConfig } from 'axios';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable()
-export class MoviesService {
+export class ConsumerService {
   private DEFAULT_AXIOS_CONFIG: AxiosRequestConfig = {
     baseURL: process.env.MOVIE_CONSUME_BASE_URL,
     headers: {
