@@ -1,9 +1,11 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { MovieRepository } from './repositories/movie.repository';
 
 @Injectable()
-export class CashinService {
-  constructor(
-    private cashinRepository: CashinRepository,
-    private readonly certificateService: CertificateService,
-  ) {}
+export class MoviesService {
+  constructor(private movieRepository: MovieRepository) {}
+
+  async returnOnly() {
+    return '';
+  }
 }
