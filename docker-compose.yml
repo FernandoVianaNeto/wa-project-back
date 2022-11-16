@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  wa-project-api:
+    container_name: wa-project-api
+    image: wa-project/image
+    build:
+      context: .
+      dockerfile: ./.setup/build/Dockerfile
+      target: development
+    command: npm run start:debug
+    env_file:
+      - .env
+    ports:
+      - 5001:5001
+    networks:
+      - wa-project-network
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+
+  wa-project-mongo:
+    image: mongo:5.0.3
+    container_name: wa-project-mongo
+    volumes:
+      - "wa-project-mongo:/data/db:delegated"
+    ports:
+      - '27017:27017'
+    networks:
+      - wa-project-network
+
+networks:
+  wa-project-network:
+
+volumes:
+  wa-project-mongo:
+    driver: local
