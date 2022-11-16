@@ -1,6 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { Roles } from 'nest-keycloak-connect';
 import { MoviesService } from '../movies.service';
 
 @Controller('/v1/cashin')
@@ -13,7 +12,6 @@ export class MoviesController {
   @ApiOperation({
     summary: 'Retorna o total do cashin da conta num período.',
   })
-  @Roles({ roles: ['app_benefits'] })
   consultDriverCashinInPeriod() {
     return this.moviesService.returnOnly();
   }
