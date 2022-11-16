@@ -13,4 +13,4 @@ import { MovieRepository } from './repositories/movie.repository';
   providers: [MoviesService, MovieRepository],
   exports: [MoviesService],
 })
-export class CashinModule {}
+export class MoviesModule {}
