@@ -12,21 +12,21 @@ export class Movie {
   title: string;
 
   @Prop({ required: true })
-  banner: number;
+  banner: Blob;
 
-  @Prop({ required: false })
+  @Prop({ required: true })
   description: string;
 
-  @Prop({ required: false, default: '' })
+  @Prop({ required: true, default: '' })
   director: string;
 
   @Prop({ required: true, default: new Date().toISOString() })
   producer: string;
 
-  @Prop({ required: true, default: new Date().getMonth() + 1 })
+  @Prop({ required: false, default: new Date().getMonth() + 1 })
   createdAt: number;
 
-  @Prop({ required: true, default: new Date().getFullYear() })
+  @Prop({ required: false, default: new Date().getFullYear() })
   updatedAt: number;
 }
 

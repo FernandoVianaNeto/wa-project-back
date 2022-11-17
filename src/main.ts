@@ -2,10 +2,11 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './modules/app.module';
-// import { HttpExceptionFilter } from './modules/filters/http-exception.filter';
+import { HttpExceptionFilter } from './filters/http-exception.filter';
 
 async function bootstrap() {
   const port = process.env.APP_PORT;
+  console.log(port);
   const app = await NestFactory.create(AppModule, { cors: true });
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
@@ -22,7 +23,7 @@ async function bootstrap() {
   });
   SwaggerModule.setup('/docs', app, document);
 
-  // app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalFilters(new HttpExceptionFilter());
 
   process.on('uncaughtException', function () {});
 
