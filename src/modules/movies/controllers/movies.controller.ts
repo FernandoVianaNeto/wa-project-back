@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { PaginationParamsDto } from 'src/modules/common/pagination/dto';
 import { MoviesService } from '../movies.service';
 
 @Controller('movies')
@@ -19,7 +20,7 @@ export class MoviesController {
   @ApiOperation({
     summary: 'Retorna o total do cashin da conta num período.',
   })
-  listMovies() {
-    return this.moviesService.listMovies();
+  listMovies(@Query() paginationParamsDto: PaginationParamsDto) {
+    return this.moviesService.listMovies(paginationParamsDto);
   }
 }

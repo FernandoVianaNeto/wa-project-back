@@ -1,4 +1,8 @@
 import { Injectable } from '@nestjs/common';
+import { PaginationParamsDto } from '../common/pagination/dto';
+import { PaginatedResponse } from '../common/pagination/interfaces';
+import { PaginationQuery } from '../common/pagination/models';
+import { paginate } from '../common/pagination/utils';
 import { ConsumerService } from '../consumer/consumer.service';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { Movie } from './entities/movies.entity';
@@ -33,9 +37,28 @@ export class MoviesService {
     return this.movieRepository.create(createMovieDto);
   }
 
-  async listMovies(): Promise<Movie[]> {
-    const movies = await this.movieRepository.find({});
+  async listMovies(
+    paginationParamsDto: PaginationParamsDto,
+  ): Promise<PaginatedResponse<Movie>> {
+    const { page, itemsPerPage } = paginationParamsDto;
+    const pagination = new PaginationQuery(page, itemsPerPage);
 
-    return movies;
+    const { skip, take, originals } = pagination.getValues();
+
+    const movies = await this.movieRepository.find(
+      {},
+      '',
+      { path: '', strictPopulate: false },
+      { createdAt: -1 },
+      take,
+      skip,
+    );
+    const count = await this.movieRepository.countDocuments({});
+
+    return paginate<Movie>([movies, count], {
+      skip,
+      take,
+      originals,
+    });
   }
 }
