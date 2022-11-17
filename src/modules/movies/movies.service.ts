@@ -32,4 +32,10 @@ export class MoviesService {
   async createMovie(createMovieDto: CreateMovieDto): Promise<Movie> {
     return this.movieRepository.create(createMovieDto);
   }
+
+  async listMovies(): Promise<Movie[]> {
+    const movies = await this.movieRepository.find({});
+
+    return movies;
+  }
 }

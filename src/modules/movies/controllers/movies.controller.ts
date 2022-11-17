@@ -7,11 +7,19 @@ import { MoviesService } from '../movies.service';
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
-  @Get('consult')
+  @Get('register')
   @ApiOperation({
     summary: 'Retorna o total do cashin da conta num período.',
   })
-  consultDriverCashinInPeriod() {
+  registerMovie() {
     return this.moviesService.consumeAndRegisterMovie();
+  }
+
+  @Get('list')
+  @ApiOperation({
+    summary: 'Retorna o total do cashin da conta num período.',
+  })
+  listMovies() {
+    return this.moviesService.listMovies();
   }
 }
