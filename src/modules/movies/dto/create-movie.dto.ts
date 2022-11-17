@@ -1,7 +1,7 @@
 export class CreateMovieDto {
   title: string;
 
-  banner: any;
+  banner: string;
 
   description: string;
 

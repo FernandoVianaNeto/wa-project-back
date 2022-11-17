@@ -12,22 +12,22 @@ export class Movie {
   title: string;
 
   @Prop({ required: true })
-  banner: Blob;
+  banner: string;
 
   @Prop({ required: true })
   description: string;
 
-  @Prop({ required: true, default: '' })
+  @Prop({ required: true })
   director: string;
 
   @Prop({ required: true, default: new Date().toISOString() })
   producer: string;
 
-  @Prop({ required: false, default: new Date().getMonth() + 1 })
-  createdAt: number;
+  @Prop({ required: false, default: new Date().toISOString() })
+  createdAt: string;
 
-  @Prop({ required: false, default: new Date().getFullYear() })
-  updatedAt: number;
+  @Prop({ required: false, default: new Date().toISOString() })
+  updatedAt: string;
 }
 
 export type MovieDocument = Movie & Document;

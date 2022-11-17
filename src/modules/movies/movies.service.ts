@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConsumerService } from '../common/consumer/consumer.service';
-// import { CreateMovieDto } from './dto/create-movie.dto';
+import { CreateMovieDto } from './dto/create-movie.dto';
+import { Movie } from './entities/movies.entity';
 import { MovieRepository } from './repositories/movie.repository';
 
 @Injectable()
@@ -11,12 +12,24 @@ export class MoviesService {
   ) {}
 
   async consumeAndRegisterMovie() {
-    const movieInfo = await this.consumerService.movieConsumer();
+    const moviesInfo = await this.consumerService.movieConsumer();
 
-    return movieInfo;
+    await Promise.all(
+      moviesInfo.map(async (movieInfo) => {
+        await this.createMovie({
+          title: movieInfo.title,
+          banner: movieInfo.movie_banner,
+          director: movieInfo.director,
+          producer: movieInfo.producer,
+          description: movieInfo.description,
+        });
+      }),
+    );
+
+    return;
   }
 
-  // async createMovie(createMovieDto: CreateMovieDto) {
-  //   return '';
-  // }
+  async createMovie(createMovieDto: CreateMovieDto): Promise<Movie> {
+    return this.movieRepository.create(createMovieDto);
+  }
 }
