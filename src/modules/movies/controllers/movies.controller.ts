@@ -1,5 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PaginationParamsDto } from 'src/modules/common/pagination/dto';
 import { MoviesService } from '../movies.service';
 
@@ -10,7 +10,7 @@ export class MoviesController {
 
   @Get('register')
   @ApiOperation({
-    summary: 'Retorna o total do cashin da conta num período.',
+    summary: 'Atualiza o banco de dados com os filmes.',
   })
   registerMovie() {
     return this.moviesService.consumeAndRegisterMovie();
@@ -18,7 +18,11 @@ export class MoviesController {
 
   @Get('list')
   @ApiOperation({
-    summary: 'Retorna o total do cashin da conta num período.',
+    summary: 'Retorna os filmes paginados.',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Retorna todos os filmes',
   })
   listMovies(@Query() paginationParamsDto: PaginationParamsDto) {
     return this.moviesService.listMovies(paginationParamsDto);

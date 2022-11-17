@@ -15,7 +15,7 @@ export class MoviesService {
     private readonly consumerService: ConsumerService,
   ) {}
 
-  async consumeAndRegisterMovie() {
+  async consumeAndRegisterMovie(): Promise<void> {
     const moviesInfo = await this.consumerService.movieConsumer();
 
     await Promise.all(
