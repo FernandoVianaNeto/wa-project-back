@@ -1,7 +1,7 @@
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ConsumerService } from '../common/consumer/consumer.service';
+import { ConsumerService } from '../consumer/consumer.service';
 import { MoviesController } from './controllers/movies.controller';
 import { Movie, MovieSchema } from './entities/movies.entity';
 import { MoviesService } from './movies.service';

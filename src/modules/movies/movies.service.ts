@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ConsumerService } from '../common/consumer/consumer.service';
+import { ConsumerService } from '../consumer/consumer.service';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { Movie } from './entities/movies.entity';
 import { MovieRepository } from './repositories/movie.repository';

@@ -3,7 +3,7 @@ import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { HttpExceptionFilter } from '../filters/http-exception.filter';
-import { ConsumerModule } from './common/consumer/consumer.module';
+import { ConsumerModule } from './consumer/consumer.module';
 import { MoviesModule } from './movies/movies.module';
 @Module({
   imports: [
