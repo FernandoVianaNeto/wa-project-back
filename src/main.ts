@@ -12,8 +12,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
 
   const swaggerOptions = new DocumentBuilder()
-    .setTitle('Benefícios - API')
-    .setDescription('Benefícios - API')
+    .setTitle('Wa-Project - API')
+    .setDescription('Wa-Project - API')
     .setExternalDoc('Download JSON', '/docs-json')
     .addBearerAuth({ type: 'http' }, 'App')
     .build();
