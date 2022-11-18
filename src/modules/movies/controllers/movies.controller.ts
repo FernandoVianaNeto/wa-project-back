@@ -25,6 +25,6 @@ export class MoviesController {
     description: 'Retorna todos os filmes',
   })
   listMovies(@Query() paginationParamsDto: PaginationParamsDto) {
-    return this.moviesService.listMovies(paginationParamsDto);
+    return this.moviesService.list(paginationParamsDto);
   }
 }

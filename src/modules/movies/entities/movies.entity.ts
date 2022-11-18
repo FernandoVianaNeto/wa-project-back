@@ -26,7 +26,7 @@ export class Movie {
   @Prop({ required: false, default: new Date().toISOString() })
   createdAt: string;
 
-  @Prop({ required: false, default: new Date().toISOString() })
+  @Prop({ required: false, default: '' })
   updatedAt: string;
 }
 
