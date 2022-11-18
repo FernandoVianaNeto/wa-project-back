@@ -20,7 +20,7 @@ export class MoviesService {
 
     await Promise.all(
       moviesInfo.map(async (movieInfo) => {
-        await this.createMovie({
+        await this.create({
           title: movieInfo.title,
           banner: movieInfo.movie_banner,
           director: movieInfo.director,
@@ -33,11 +33,11 @@ export class MoviesService {
     return;
   }
 
-  async createMovie(createMovieDto: CreateMovieDto): Promise<Movie> {
+  async create(createMovieDto: CreateMovieDto): Promise<Movie> {
     return this.movieRepository.create(createMovieDto);
   }
 
-  async listMovies(
+  async list(
     paginationParamsDto: PaginationParamsDto,
   ): Promise<PaginatedResponse<Movie>> {
     const { page, itemsPerPage } = paginationParamsDto;

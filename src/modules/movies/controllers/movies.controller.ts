@@ -1,6 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PaginationParamsDto } from 'src/modules/common/pagination/dto';
+import { PaginationParamsDto } from '../../common/pagination/dto';
 import { MoviesService } from '../movies.service';
 
 @Controller('movies')
@@ -25,6 +25,6 @@ export class MoviesController {
     description: 'Retorna todos os filmes',
   })
   listMovies(@Query() paginationParamsDto: PaginationParamsDto) {
-    return this.moviesService.listMovies(paginationParamsDto);
+    return this.moviesService.list(paginationParamsDto);
   }
 }
