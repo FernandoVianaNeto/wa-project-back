@@ -34,3 +34,11 @@ export const consumerStub = () => {
     url: 'https://ghibliapi.herokuapp.com/films/2baf70d1-42bb-4437-b551-e5fed5a87abe',
   };
 };
+
+export const axiosResponse = (data?: object, status?: number) => ({
+  data,
+  status: status ? status : 200,
+  statusText: status ? String(status) : '200',
+  headers: {},
+  config: {},
+});
