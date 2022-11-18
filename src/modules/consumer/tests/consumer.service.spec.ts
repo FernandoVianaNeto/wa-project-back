@@ -7,7 +7,7 @@ import { ConsumerService } from '../../consumer/consumer.service';
 import { HttpService } from '@nestjs/axios';
 import { of } from 'rxjs';
 
-describe('Movies Service', () => {
+describe('Consumer Service', () => {
   let consumerService: ConsumerService;
   let httpService: HttpService;
 
@@ -32,7 +32,7 @@ describe('Movies Service', () => {
   });
 
   describe('movieConsumer', () => {
-    it('should return an array of cashin amount and id accounts', async () => {
+    it('should return the list of movies consumed', async () => {
       jest
         .spyOn(httpService, 'get')
         .mockImplementationOnce(() => of(axiosResponse(consumerStub())));

@@ -41,7 +41,7 @@ describe('Movies Service', () => {
   });
 
   describe('consumerAndRegisterMovie', () => {
-    it('should return an array of cashin amount and id accounts', async () => {
+    it('should return undefined if the process if oK', async () => {
       jest
         .spyOn(consumerService, 'movieConsumer')
         .mockResolvedValueOnce([consumerStub()]);
@@ -57,7 +57,7 @@ describe('Movies Service', () => {
   });
 
   describe('create', () => {
-    it('should return an array of cashin amount and id accounts', async () => {
+    it('should return a movies registered', async () => {
       jest
         .spyOn(movieRepository, 'create')
         .mockResolvedValueOnce(moviesStub() as MovieDocument);
@@ -69,7 +69,7 @@ describe('Movies Service', () => {
   });
 
   describe('list', () => {
-    it('should return an array of cashin amount and id accounts', async () => {
+    it('should return an array of movies', async () => {
       jest
         .spyOn(movieRepository, 'find')
         .mockResolvedValueOnce([moviesStub() as MovieDocument]);
